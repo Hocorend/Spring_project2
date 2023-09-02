@@ -21,7 +21,7 @@ public class Person {
     private int id;
 
     @NotEmpty(message ="ФИО не должно быть пустым")
-    @Pattern(regexp = "[A-Z]\\w+ [A-Z]\\w+ [A-Z]\\w+", message = "Введите ФИО в формате: Фамилия Имя Отчество")
+    @Pattern(regexp = "[A-ZА-Я]\\w+ [A-ZА-Я]\\w+ [A-ZА-Я]\\w+", message = "Введите ФИО в формате: Фамилия Имя Отчество")
     @Column(name = "full_name")
     private String fullName;
 

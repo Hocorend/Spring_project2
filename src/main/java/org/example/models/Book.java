@@ -6,7 +6,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Entity
 @Data
@@ -37,9 +39,12 @@ public class Book {
     private Date dayOfIssue;
 
     @ManyToOne
-    @JoinColumn(name = "perdon_id", referencedColumnName = "id")
+    @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person owner;
     public Book(){}
+
+    @Transient
+    public boolean isOverdue;
 
     public Book(int id, String title, String author, Date yearOfRelease, Date dayOfIssue, Person owner) {
         this.id = id;
@@ -59,5 +64,13 @@ public class Book {
                 ", yearOfRelease=" + yearOfRelease +
                 ", dayOfIssue=" + dayOfIssue +
                 '}';
+    }
+
+    public boolean isOverdue(){
+        return isOverdue;
+    }
+
+    public void setOverdue(boolean overdue){
+        this.isOverdue = overdue;
     }
 }
