@@ -45,7 +45,6 @@ public class PeopleService {
                 if (dayOfIssue.compareTo(today) < 0){
                     book.setOverdue(true);
                 }
-                System.out.println("Result: "+ dayOfIssue.compareTo(today));
             });
         }
         return books;
